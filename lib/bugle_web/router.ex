@@ -19,8 +19,11 @@ defmodule BugleWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", BugleWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BugleWeb.API do
+    pipe_through :api
+
+    scope "/v1", V1 do
+      get "/status/ping", StatusController, :ping
+    end
+  end
 end
