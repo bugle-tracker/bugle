@@ -10,6 +10,7 @@ defmodule Bugle.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      releases: releases(),
       deps: deps()
     ]
   end
@@ -23,6 +24,14 @@ defmodule Bugle.MixProject do
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
+
+  def releases() do
+    [
+      bugle: [
+        include_executables_for: [:unix]
+      ]
+    ]
+  end
 
   defp deps do
     [
