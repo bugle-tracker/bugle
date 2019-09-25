@@ -18,6 +18,7 @@ defmodule BugleWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    live "/orgs/new", Organization.New
   end
 
   scope "/api", BugleWeb.API do
